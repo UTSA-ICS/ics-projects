@@ -1,0 +1,11 @@
+what is ZeroVM:
+
+ZeroVM is a new virtualization technique supposed to be very light weight, fast and short in lifetime. For example, while traditional hypervisors (ex. kvm, xen) take 1 or 2 seconds to be loaded, zerovm supposed to be loaded in couple of milliseconds. On the other hand, while existing VM runs and serves many request, zerovm only serve one request, then it dies and never been used again. ZeroVM take advantage of this philosophy. When a zeroVM is loaded, it loads minimum files and creates minimum environment to serve that request. For example, if your zerovm only serves one python script,
+it needs only python environment. No need for other fancy things. More interestingly, zerovm does not even implement TCP / IP stack.
+
+One other interesting aspect of zerovm is its deterministic support. As Convention VM runs tons of services and applications, when it fails or create a fault, it may be hard to reproduce the fault. For example, if the fault is due to race condition of running applications, it is likely that the same environment does not re-produce same fault in later runs. May be this is one reason, debugging in cloud app is hard . ZeroVM solution for this is its deterministic environment. ZeroVM achieves this determinism through its single thread model. What it means – zeroVM only run one application in single thread. So, there would be no race condition, no SIGNAL to interrupt the thread. So, life is easy and nice for debugging in ZeroVM execution.
+
+You may find more document of zerovm in the feference section.
+
+References:
+http://zerovm.org/index.htm
